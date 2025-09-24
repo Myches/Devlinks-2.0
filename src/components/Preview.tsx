@@ -1,5 +1,5 @@
 import { useAuth } from "../context/authContext";
-import { toast } from "react-toastify"; // Optional for notifications
+
 
 interface Link {
   id: number;
@@ -7,12 +7,7 @@ interface Link {
   url: string;
 }
 
-interface ProfileInfo {
-  firstName: string;
-  lastName: string;
-  email: string;
-  profileImage: string | null;
-}
+
 
 interface PlatformConfig {
   [key: string]: { color: string; icon: string };
@@ -21,16 +16,7 @@ interface PlatformConfig {
 export default function Preview() {
   const { savedLinks, profileInfo } = useAuth();
 
-  // Generate a shareable link for the entire profile
-  const username = `${profileInfo?.firstName?.toLowerCase()}_${profileInfo?.lastName?.toLowerCase()}`;
-  const shareableLink = `https://linksters.netlify.app/profile/${username}`; 
-
-  // Copy link to clipboard
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(shareableLink);
-    toast.success("Profile link copied to clipboard!", { autoClose: 2000 });
-  };
-
+ 
   const previewStyle = {
     backgroundImage: 'url(/images/Subtract.png)',
     backgroundSize: '100% 100%',

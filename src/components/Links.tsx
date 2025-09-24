@@ -4,7 +4,6 @@ import { useState } from "react";
 export default function Links({ onClose }: { onClose: () => void }) {
   const {
     linkForms,
-    setLinkForms,
     saveAllLinks,
     updateLinkForm,
     removeLinkForm,
