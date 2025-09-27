@@ -56,46 +56,59 @@ export default function Signup() {
   };
 
   return (
-    <main className="w-full h-screen flex justify-center items-center bg-gray-200">
-      <div className="w-full h-full md:w-[476px] md:h-[573px] bg-white flex flex-col justify-center items-center md:rounded-lg shadow-lg">
-        <h1 className="flex justify-center items-center mx-8">
-          <img src="/images/Group 252.svg" width={146} height={32} alt="logo" />
-        </h1>
+    <main className="min-h-screen flex justify-center items-center bg-gray-200 px-4 py-6">
+      <div className="w-full max-w-md bg-white flex flex-col justify-center items-center rounded-lg shadow-lg p-4 sm:p-6 md:p-8 mx-auto">
+        {/* Logo */}
+        <div className="flex justify-center items-center mb-4 sm:mb-6">
+          <img 
+            src="/images/Group 252.svg" 
+            width={146} 
+            height={32} 
+            alt="logo" 
+            className="w-32 sm:w-36 md:w-40 h-auto"
+          />
+        </div>
 
         {/* Error message */}
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 w-full max-w-md">
+          <div className="bg-red-100 border border-red-400 text-red-700 px-3 py-2 sm:px-4 sm:py-3 rounded mb-4 w-full text-sm sm:text-base">
             {error}
           </div>
         )}
 
-        <form className="w-full max-w-md p-4 md:px-8" onSubmit={handleSubmit(onSubmit)} noValidate>
-          <h1 className="text-2xl md:text-[32px] text-center text-neutral-900 pb-2">
-            Create Account
-          </h1>
-          <p className="text-sm md:text-4 text-center text-neutral-900">
-            Let&apos;s get you started sharing your links
-          </p>
+        <form className="w-full" onSubmit={handleSubmit(onSubmit)} noValidate>
+          {/* Heading */}
+          <div className="text-center mb-4 sm:mb-6">
+            <h1 className="text-xl sm:text-2xl md:text-3xl text-neutral-900 font-semibold pb-2">
+              Create Account
+            </h1>
+            <p className="text-xs sm:text-sm text-neutral-600">
+              Let&apos;s get you started sharing your links
+            </p>
+          </div>
 
           {/* Email Field */}
-          <div className="pt-4 text-xs md:text-md text-neutral-700 space-y-1">
-            <label htmlFor="email">Email address</label>
-            <div className={`p-2 w-full h-[48px] flex space-x-4 border rounded-lg ${
+          <div className="mb-4 sm:mb-5">
+            <label htmlFor="email" className="block text-sm font-medium text-neutral-700 mb-2">
+              Email address
+            </label>
+            <div className={`flex items-center border rounded-lg p-2 h-10 sm:h-12 ${
               errors.email ? 'border-red-500' : 'border-gray-300'
-            } focus-within:ring-2 focus-within:ring-blue-500`}>
-              <span className="flex justify-center items-center">
+            } focus-within:ring-2 focus-within:ring-blue-500 transition-colors`}>
+              <span className="flex justify-center items-center mr-2">
                 <img
                   src="/images/ph_envelope-simple-fill.svg"
-                  width={16}
-                  height={16}
-                  alt="address logo"
+                  width={14}
+                  height={14}
+                  alt="Email icon"
+                  className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                 />
               </span>
               <input
                 type="email"
                 id="email"
                 placeholder="Enter your email"
-                className="w-full outline-none bg-transparent"
+                className="w-full outline-none bg-transparent text-sm sm:text-base placeholder-gray-400"
                 autoComplete="email"
                 {...register("email")}
               />
@@ -106,24 +119,27 @@ export default function Signup() {
           </div>
 
           {/* Password Field */}
-          <div className="pt-4 text-xs md:text-md text-neutral-700 space-y-1">
-            <label htmlFor="password">Create Password</label>
-            <div className={`p-2 w-full h-[48px] flex space-x-4 border rounded-lg ${
+          <div className="mb-4 sm:mb-5">
+            <label htmlFor="password" className="block text-sm font-medium text-neutral-700 mb-2">
+              Create Password
+            </label>
+            <div className={`flex items-center border rounded-lg p-2 h-10 sm:h-12 ${
               errors.password ? 'border-red-500' : 'border-gray-300'
-            } focus-within:ring-2 focus-within:ring-blue-500`}>
-              <span className="flex justify-center items-center">
+            } focus-within:ring-2 focus-within:ring-blue-500 transition-colors`}>
+              <span className="flex justify-center items-center mr-2">
                 <img
                   src="/images/ph_lock-key-fill.svg"
-                  width={16}
-                  height={16}
-                  alt="password logo"
+                  width={14}
+                  height={14}
+                  alt="Password icon"
+                  className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                 />
               </span>
               <input
                 type="password"
                 id="password"
                 placeholder="Enter your password"
-                className="w-full outline-none bg-transparent"
+                className="w-full outline-none bg-transparent text-sm sm:text-base placeholder-gray-400"
                 autoComplete="new-password"
                 {...register("password")}
               />
@@ -134,24 +150,27 @@ export default function Signup() {
           </div>
 
           {/* Confirm Password Field */}
-          <div className="pt-4 text-xs md:text-md text-neutral-700 space-y-1">
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <div className={`p-2 w-full h-[48px] flex space-x-4 border rounded-lg ${
+          <div className="mb-4 sm:mb-6">
+            <label htmlFor="confirmPassword" className="block text-sm font-medium text-neutral-700 mb-2">
+              Confirm Password
+            </label>
+            <div className={`flex items-center border rounded-lg p-2 h-10 sm:h-12 ${
               errors.confirmPassword ? 'border-red-500' : 'border-gray-300'
-            } focus-within:ring-2 focus-within:ring-blue-500`}>
-              <span className="flex justify-center items-center">
+            } focus-within:ring-2 focus-within:ring-blue-500 transition-colors`}>
+              <span className="flex justify-center items-center mr-2">
                 <img
                   src="/images/ph_lock-key-fill.svg"
-                  width={16}
-                  height={16}
-                  alt="confirm password logo"
+                  width={14}
+                  height={14}
+                  alt="Confirm password icon"
+                  className="w-3.5 h-3.5 sm:w-4 sm:h-4"
                 />
               </span>
               <input
                 type="password"
                 id="confirmPassword"
                 placeholder="Confirm your password"
-                className="w-full outline-none bg-transparent"
+                className="w-full outline-none bg-transparent text-sm sm:text-base placeholder-gray-400"
                 autoComplete="new-password"
                 {...register("confirmPassword")}
               />
@@ -161,20 +180,24 @@ export default function Signup() {
             )}
           </div>
 
+          {/* Submit Button */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full h-[46px] bg-violet-600 text-white text-[16px] cursor-pointer my-4 border rounded-lg hover:bg-violet-700 transition-colors disabled:opacity-70"
+            className="w-full h-11 sm:h-12 bg-violet-600 text-white text-sm sm:text-base cursor-pointer my-3 sm:my-4 border rounded-lg hover:bg-violet-700 transition-colors disabled:opacity-70 font-semibold"
           >
             {loading ? "Creating Account..." : "Create your account"}
           </button>
           
-          <h2 className="text-sm md:text-[16px] pt-2 flex justify-center items-center cursor-pointer">
-            Already have an account?{" "}
-            <Link to='/' className="px-2 text-violet-600 hover:underline"> 
-              Login            
-            </Link>
-          </h2>
+          {/* Login link */}
+          <div className="text-center mt-3 sm:mt-4">
+            <span className="text-xs sm:text-sm flex flex-wrap justify-center items-center text-gray-600">
+              Already have an account?{" "}
+              <Link to='/' className="px-1 sm:px-2 text-violet-600 hover:text-violet-700 font-medium hover:underline">
+                Login            
+              </Link>
+            </span>
+          </div>
         </form>
       </div>
     </main>

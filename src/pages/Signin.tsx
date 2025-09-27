@@ -62,7 +62,7 @@ function Signin() {
   // Show loading screen while checking authentication state
   if (authLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-200">
+      <div className="min-h-screen flex items-center justify-center bg-gray-200 px-4">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-violet-600 mx-auto"></div>
           <p className="mt-4 text-gray-600">Loading...</p>
@@ -72,16 +72,20 @@ function Signin() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-200">
-      <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-8">
+    <div className="min-h-screen flex items-center justify-center bg-gray-200 px-4 py-6">
+      <div className="w-full max-w-md bg-white rounded-lg shadow-lg p-4 sm:p-6 md:p-8 mx-auto">
         {/* Logo */}
-        <div className="flex justify-center mb-6">
-          <img src="/images/Group 252.svg" alt="App Logo" className="h-12" />
+        <div className="flex justify-center mb-4 sm:mb-6">
+          <img 
+            src="/images/Group 252.svg" 
+            alt="App Logo" 
+            className="h-10 sm:h-12 w-auto" 
+          />
         </div>
 
         {/* Error message */}
         {error && (
-          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+          <div className="bg-red-100 border border-red-400 text-red-700 px-3 py-2 sm:px-4 sm:py-3 rounded mb-4 text-sm sm:text-base">
             {error}
           </div>
         )}
@@ -90,35 +94,35 @@ function Signin() {
         <button
           onClick={handleGoogleSignIn}
           disabled={googleLoading}
-          className="w-full flex items-center cursor-pointer justify-center gap-3 bg-white border border-gray-300 text-gray-700 font-semibold py-3 rounded-lg hover:bg-gray-50 transition duration-200 disabled:opacity-70 mb-6"
+          className="w-full flex items-center cursor-pointer justify-center gap-2 sm:gap-3 bg-white border border-gray-300 text-gray-700 font-semibold py-2.5 sm:py-3 rounded-lg hover:bg-gray-50 transition duration-200 disabled:opacity-70 mb-4 sm:mb-6 text-sm sm:text-base"
         >
           <img
             src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg"
             alt="Google"
-            className="w-5 h-5"
+            className="w-4 h-4 sm:w-5 sm:h-5"
           />
-          {googleLoading ? "Signing in with Google..." : "Sign in with Google"}
+          {googleLoading ? "Signing in..." : "Sign in with Google"}
         </button>
 
         {/* Divider */}
-        <div className="relative mb-6">
+        <div className="relative mb-4 sm:mb-6">
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-gray-300"></div>
           </div>
           <div className="relative flex justify-center text-sm">
-            <span className="px-2 bg-white text-gray-500">Or continue with email</span>
+            <span className="px-2 bg-white text-gray-500 text-xs sm:text-sm">Or continue with email</span>
           </div>
         </div>
 
         {/* Email Form */}
         <form className="w-full" onSubmit={handleSubmit(onSubmit)} noValidate>
          
-          <p className="text-base text-neutral-800 text-center mb-8">
+          <p className="text-sm sm:text-base text-neutral-800 text-center mb-4 sm:mb-6 md:mb-8">
             Add your details below to get back into the app
           </p>
 
           {/* Email Field */}
-          <div className="mb-5">
+          <div className="mb-4 sm:mb-5">
             <label
               htmlFor="email"
               className="block text-sm font-medium text-black mb-2"
@@ -128,20 +132,20 @@ function Signin() {
             <div
               className={`flex items-center border ${
                 errors.email ? "border-red-500" : "border-gray-300"
-              } rounded-lg p-2 h-12 focus-within:ring-2 focus-within:ring-blue-500`}
+              } rounded-lg p-2 h-10 sm:h-12 focus-within:ring-2 focus-within:ring-blue-500 transition-colors`}
             >
               <img
                 src="/images/ph_envelope-simple-fill.svg"
-                width={16}
-                height={16}
+                width={14}
+                height={14}
                 alt="Email Icon"
-                className="mr-2"
+                className="mr-2 w-3.5 h-3.5 sm:w-4 sm:h-4"
               />
               <input
                 type="email"
                 id="email"
                 placeholder="Enter your email"
-                className="w-full h-full outline-none text-base text-gray-600 bg-transparent"
+                className="w-full h-full outline-none text-sm sm:text-base text-gray-600 bg-transparent placeholder-gray-400"
                 autoComplete="email"
                 {...register("email")}
               />
@@ -154,7 +158,7 @@ function Signin() {
           </div>
 
           {/* Password Field */}
-          <div className="mb-6">
+          <div className="mb-4 sm:mb-6">
             <label
               htmlFor="password"
               className="block text-sm font-medium text-black mb-2"
@@ -164,20 +168,20 @@ function Signin() {
             <div
               className={`flex items-center border ${
                 errors.password ? "border-red-500" : "border-gray-300"
-              } rounded-lg p-2 h-12 focus-within:ring-2 focus-within:ring-blue-500`}
+              } rounded-lg p-2 h-10 sm:h-12 focus-within:ring-2 focus-within:ring-blue-500 transition-colors`}
             >
               <img
                 src="/images/ph_lock-key-fill.svg"
-                width={16}
-                height={16}
+                width={14}
+                height={14}
                 alt="Password Icon"
-                className="mr-2"
+                className="mr-2 w-3.5 h-3.5 sm:w-4 sm:h-4"
               />
               <input
                 type="password"
                 id="password"
                 placeholder="Enter your password"
-                className="w-full h-full outline-none text-base text-gray-600 bg-transparent"
+                className="w-full h-full outline-none text-sm sm:text-base text-gray-600 bg-transparent placeholder-gray-400"
                 autoComplete="current-password"
                 {...register("password")}
               />
@@ -193,18 +197,20 @@ function Signin() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-violet-600 text-white cursor-pointer font-semibold py-3 rounded-lg hover:bg-blue-700 transition duration-200 disabled:opacity-70"
+            className="w-full bg-violet-600 text-white cursor-pointer font-semibold py-2.5 sm:py-3 rounded-lg hover:bg-violet-700 transition duration-200 disabled:opacity-70 text-sm sm:text-base"
           >
             {loading ? "Signing In..." : "Sign In"}
           </button>
 
-          <h2 className="text-sm md:text-[16px] pt-2 flex justify-center items-center mt-4 cursor-pointer">
-            Don&apos;t have an account?{" "}
-            <Link to="/sign-up" className="px-2 text-violet-600">
-              Create account
-            </Link>
-          </h2>
-          
+          {/* Sign up link */}
+          <div className="text-center mt-3 sm:mt-4">
+            <span className="text-xs sm:text-sm flex flex-wrap justify-center items-center text-gray-600">
+              Don&apos;t have an account?{" "}
+              <Link to="/sign-up" className="px-1 sm:px-2 text-violet-600 hover:text-violet-700 font-medium">
+                Create account
+              </Link>
+            </span>
+          </div>
         </form>
       </div>
     </div>
